@@ -78,7 +78,7 @@ def lambda_handler(event, context):
         for dream_id in dream_ids:
             dream_details = get_dream_details(dream_id)
             # Add only if there's valid data
-            if dream_details['prompt'] or dream_details['url']:
+            if dream_details['prompt'] and dream_details['url']:
                 dreams.append(dream_details)
 
         # Construct the response

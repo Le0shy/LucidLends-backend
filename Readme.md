@@ -1,6 +1,6 @@
 ### Readme
 
-#### **Deploy All Lambda function into **
+#### Deploy All Lambda function into
 
 #### 1. **Set Up a Local Environment**
 

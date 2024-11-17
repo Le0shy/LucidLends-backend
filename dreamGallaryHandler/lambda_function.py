@@ -61,15 +61,15 @@ def lambda_handler(event, context):
     """
     try:
         # Extract userId from the event
-        if isinstance(event.get('body'), str):
-            input_body = json.loads(event['body'])
-        else:
-            input_body = event.get('body', {})
-
-        user_id = input_body.get('userId')
+        
+        query_parameters = event.get('queryStringParameters', {})
+        if not query_parameters:
+            return create_response(200, False, "No query parameters provided")
+            
+        user_id = query_parameters.get('userId')
         if not user_id:
-            raise ValueError("userId is required in the event payload")
-
+            return create_response(200, False, "Missing userId parameter")
+        
         print(f"Fetching dream IDs for userId: {user_id}")
         dream_ids = get_dream_ids(user_id)
 
